@@ -52,7 +52,30 @@ jenkins:
               - "Overall/Read"
               - "Job/Read"
             entries:
-              - user: "nasso"
+              - user: "nasso"            
+security:
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: false
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy: "noHostKeyVerificationStrategy"
+    # globalHostKeyVerificationConfiguration:
+    # sshHostKeyVerificationStrategy:
+    #   manuallyProvidedKeyVerificationStrategy:
+    #     approvedHostKeys: |
+    #       github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+    #       github.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7OPK74CBZYjeCR5GAXYiW8ggRgiDhkwQQmrXRE3BtIL3jGryntc7gEXW76w8m9ZsN74U=
+    #       github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLCS1cXODkyRF8GCEB9JyjOCu5bhFux5DGln03XZ2IQkbY39YKt6VtbM8mE6W6XqBpIbtYylUtMabUEmL89hth6vHGDThjbUGfGgbHJxtwBmEMwHIE2g3q9nj7b+1ahXYOMGiSM0rS9b++WORf+eH7kG6gH7sFQtZPE89XWTA6Ib3E8m8t8crRmWIn9YfA7AgJaW2asNWDxtvHLNfD2C6SvejaIFOPjc3mNTo8tubImToisX73llR87SBdhLAvSBymLglCX5B6CXSuYyCrkbCH5nHyXptUnO+VIvSjrmXy7A7YHJGo8MHXYRNjHCH8vH270EZF8M8A2N3LLol8WZxlO7wBffwA9S43fUUs85EwOIyY16HeK4E449m2159iG3Ue0O1w0G2dJj40989=
+credentials:
+    system:
+      domainCredentials:
+      - credentials:
+        - basicSSHUserPrivateKey:
+            id: "admin-ssh-key"
+            privateKeySource:
+              directEntry:
+                privateKey: ${SSH_PRIVATE_KEY}
+            scope: GLOBAL
+            username: "admin"
 jobs:
   - file: /var/jenkins_casc_configs/job_dsl.groovy
 

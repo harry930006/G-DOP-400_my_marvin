@@ -31,6 +31,7 @@ freeStyleJob("Tools/SEED") {
                         git("\${GitHub_project_URL}") {
                             remote {
                                 github("\${GITHUB_NAME}")
+                                credential("github-ssh-key")
                             }
                         }
 
