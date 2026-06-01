@@ -25,7 +25,6 @@ freeStyleJob("Tools/SEED") {
     steps {
         dsl {
             text("""
-                def GitHub_project_URL = "https://github.com/\${GITHUB_NAME}"
                 job ("\${DISPLAY_NAME}") {
                     scm {
                         git() {
