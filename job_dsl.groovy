@@ -25,19 +25,19 @@ freeStyleJob("Tools/SEED") {
     steps {
         dsl {
             text("""
-                def GitHub_project_URL = "git@github.com:\${GITHUB_NAME}.git"
+                def GitHub_project_URL = "https://github.com/\${GITHUB_NAME}"
                 job ("\${DISPLAY_NAME}") {
                     scm {
-                        git("\${GitHub_project_URL}") {
+                        git() {
                             remote {
                                 github("\${GITHUB_NAME}")
-                                credential("github-ssh-key")
+                                credentials("admin-ssh-key")
                             }
                         }
 
                     }
                     properties {
-                        githubProjectUrl("\${GitHub_project_URL}")
+                        githubProjectUrl("\${GITHUB_NAME}")
                     }
                     triggers {
                         scm("* * * * *")}

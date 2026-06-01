@@ -57,7 +57,7 @@ security:
   globalJobDslSecurityConfiguration:
     useScriptSecurity: false
   gitHostKeyVerificationConfiguration:
-    sshHostKeyVerificationStrategy: "noHostKeyVerificationStrategy"
+    sshHostKeyVerificationStrategy: "acceptFirstConnectionStrategy"
     # globalHostKeyVerificationConfiguration:
     # sshHostKeyVerificationStrategy:
     #   manuallyProvidedKeyVerificationStrategy:
